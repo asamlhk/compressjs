@@ -12,7 +12,11 @@ export class AppComponent {
     static: true
   })
   fileInput: ElementRef;
-data = {};
+  data = {};
+  img = {
+    origin: null,
+    compressed: null
+  };
   selectFile = () => {
     let file = this.fileInput.nativeElement.files[0];
 
@@ -23,6 +27,15 @@ data = {};
           originalFileSize: file.size,
           compressedFileSize: result.size
         };
+
+        globalThis.img = {
+          origin: URL.createObjectURL(file),
+          compressed: URL.createObjectURL(result)
+        };
+
+         globalThis.document.getElementById('originImg').src =  URL.createObjectURL(file)
+         globalThis.document.getElementById('compressedImg').src =  URL.createObjectURL(result)
+        //console.log(img1);
       }
     });
 

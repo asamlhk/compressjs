@@ -1,4 +1,9 @@
 <input type="file" accept="image/*;capture=camera"
   (change)="selectFile()" #fileInput>
 
- {{data | json}}
+ fileSize:{{data | json}}
+ 
+<h3>Original Image</h3>
+<img id="originImg">
+<h3>compressed Image</h3>
+<img id="compressedImg">
